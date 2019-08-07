@@ -6,5 +6,6 @@ __all__ = [
 	"function",
 	"main",
 	"model",
-	"plot"
+	"plot",
+	"utils"
 ]
