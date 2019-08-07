@@ -1,6 +1,5 @@
 
-import model.stock as stock
-import plot.stock as plot
+import utils.figure as figure
 import db
 
 
@@ -10,11 +9,8 @@ import db
 def main():
 	print("Plot ...")
 
-	stc = stock.load("data/a.us.txt")
-
-	plt = plot.Plot(stc)
-	
-	plt.draw()
+	f = figure.create("Stock")
+	f.show()
 
 
 
