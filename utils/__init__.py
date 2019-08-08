@@ -3,5 +3,7 @@ __all__ = [
 	"csv",
 	"figure",
 	"file",
-	"folder"
+	"folder",
+	"plot",
+	"plot"
 ]
