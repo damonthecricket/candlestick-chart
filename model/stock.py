@@ -1,6 +1,6 @@
 
-import utils.file as file
-import utils.csv as csv
+import libs.pyutils.file as file
+import libs.pyutils.csv_util as csv
 
 from model.candle import *
 
@@ -9,7 +9,7 @@ from model.candle import *
 # Stock
 
 def load(path):
-	c = csv.load(path)
+	c = csv.load_dictionary(path)
 	name = file.name_from_path(path)
 	return Stock(name, c)
 

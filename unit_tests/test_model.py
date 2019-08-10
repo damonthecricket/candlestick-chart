@@ -5,8 +5,8 @@ import unittest
 import model
 import model.stock
 
-import utils.file as file
-import utils.csv as csv
+import libs.pyutils.file as file
+import libs.pyutils.csv_util as csv
 
 from model.candle import *
 
@@ -21,7 +21,7 @@ class TestStock(unittest.TestCase):
 	def test_instance(self):
 		for file_path in stock_mock():
 
-			csv_file = csv.load(file_path)
+			csv_file = csv.load_dictionary(file_path)
 
 			name = file.name_from_path(file_path)
 
@@ -56,7 +56,7 @@ class TestCandle(unittest.TestCase):
 	def test_instance(self):
 		for file_path in stock_mock():
 
-			csv_file = csv.load(file_path)
+			csv_file = csv.load_dictionary(file_path)
 
 			self.assertTrue(len(csv_file) != 0)
 
