@@ -17,19 +17,20 @@ DEFAULT_Y_LABEL = ''
 
 
 
-def create(subplot, x = DEFAULT_X, y = DEFAULT_Y, color = DEFAULT_COLOR, line_width = DEFAULT_LINE_WIDTH, x_label = DEFAULT_X_LABEL, y_label = DEFAULT_Y_LABEL):
-	return Plot(subplot, x, y, color, line_width, x_label, y_label)
+def create(subplot, x = DEFAULT_X, y = DEFAULT_Y, color = DEFAULT_COLOR, width = DEFAULT_LINE_WIDTH, x_label = DEFAULT_X_LABEL, y_label = DEFAULT_Y_LABEL):
+	return Plot(subplot, x, y, color, width, x_label, y_label)
 
 
 
 class Plot:
 
-	def __init__(self, subplot, x = DEFAULT_X, y = DEFAULT_Y, color = DEFAULT_COLOR, line_width = DEFAULT_LINE_WIDTH, x_label = DEFAULT_X_LABEL, y_label = DEFAULT_Y_LABEL):
+	def __init__(self, subplot, x = DEFAULT_X, y = DEFAULT_Y, color = DEFAULT_COLOR, width = DEFAULT_LINE_WIDTH, x_label = DEFAULT_X_LABEL, y_label = DEFAULT_Y_LABEL):
 		self._subplot = subplot
 		self._x = x
 		self._y = y
 		self._color = color
-		self._line_width = line_width
+		self._width = width
+
 
 		self.update_coodinates()
 
@@ -43,7 +44,7 @@ class Plot:
 
 
 	def update_coodinates(self):
-		self._subplot.plot(self._x, self._y, self._color, self._line_width)
+		self._subplot.plot(self._x, self._y, self._color, self._width)
 
 
 	def set_x_y(self, x, y):
@@ -76,6 +77,7 @@ class Plot:
 
 	def y_label(self):
 		return self._y_label
+
 
 
 

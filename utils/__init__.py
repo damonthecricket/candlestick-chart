@@ -1,9 +1,9 @@
+
 __all__ = [
+	"shape",
 	"array",
 	"csv",
-	"figure",
 	"file",
 	"folder",
-	"plot",
 	"plot"
 ]

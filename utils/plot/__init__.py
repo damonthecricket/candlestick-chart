@@ -2,5 +2,6 @@
 __all__ = [
 	"axe",
 	"figure",
-	"plot"
+	"plot",
+	"point"
 ]
