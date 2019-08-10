@@ -1,7 +1,13 @@
 
 import unittest
 
-import model, model.stock
+
+import model
+import model.stock
+
+import utils.file as file
+import utils.csv as csv
+
 from model.candle import *
 
 import db
@@ -15,21 +21,21 @@ class TestStock(unittest.TestCase):
 	def test_instance(self):
 		for file_path in stock_mock():
 
-			csv = db.load_csv(file_path)
+			csv_file = csv.load(file_path)
 
-			name = db.file_name_from_path(file_path)
+			name = file.name_from_path(file_path)
 
 			candles = []
 
-			for c in csv:
+			for c in csv_file:
 
 				candle = Candle(c)
 
 				candles.append(candle)
 
 			loaded = model.stock.load(file_path)
-			created = model.stock.create(name, csv)
-			stock = model.stock.Stock(name, csv)
+			created = model.stock.create(name, csv_file)
+			stock = model.stock.Stock(name, csv_file)
 
 			self.assertEqual(loaded.name(), name)
 			self.assertEqual(loaded.candles(), candles)
@@ -50,13 +56,13 @@ class TestCandle(unittest.TestCase):
 	def test_instance(self):
 		for file_path in stock_mock():
 
-			csv = db.load_csv(file_path)
+			csv_file = csv.load(file_path)
 
-			self.assertTrue(len(csv) != 0)
+			self.assertTrue(len(csv_file) != 0)
 
 			candle_count = 0
 
-			for c in csv:
+			for c in csv_file:
 
 				candle_count += 1
 
@@ -71,7 +77,7 @@ class TestCandle(unittest.TestCase):
 				self.assertEqual(candle.open_int(), c[db.OPEN_INT_KEY])
 
 
-			self.assertEqual(candle_count, len(csv))
+			self.assertEqual(candle_count, len(csv_file))
 
 
 def stock_mock():

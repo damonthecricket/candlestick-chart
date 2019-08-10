@@ -2,7 +2,10 @@
 import unittest
 
 import db
-from db import folder_content, load_csv
+import utils.csv as csv
+import utils.folder as folder
+
+# from db import folder_content
 
 
 
@@ -11,14 +14,14 @@ from db import folder_content, load_csv
 class TestDB(unittest.TestCase):
 
 	def test_load(self):
-		folder = "unit_tests/data"
-		db_content = db.load(folder)
+		f = "unit_tests/data"
+		db_content = db.load(f)
 
 		folder_content = []
 
 		for p in self.__db_paths_mock():
-			csv = load_csv(p)
-			folder_content.append(csv)
+			c = csv.load(p)
+			folder_content.append(c)
 
 		self.assertEqual(db_content, folder_content)
 

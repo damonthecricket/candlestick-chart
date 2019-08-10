@@ -1,31 +1,33 @@
 
+import utils.file as file
+import utils.csv as csv
+
 from model.candle import *
-from db import load_csv, file_name_from_path
 
 
 
 # Stock
 
 def load(path):
-	csv = load_csv(path)
-	name = file_name_from_path(path)
-	return Stock(name, csv)
+	c = csv.load(path)
+	name = file.name_from_path(path)
+	return Stock(name, c)
 
 
 
-def create(name, csv):
-	return Stock(name, csv)
+def create(name, csv_file):
+	return Stock(name, csv_file)
 
 
 
 class Stock:
 
-	def __init__(self, name, csv):
+	def __init__(self, name, csv_file):
 		self._name = name
 
 		self._candles = []
 
-		for c in csv:
+		for c in csv_file:
 			self._candles.append( Candle(c) )
 
 

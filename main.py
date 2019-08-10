@@ -1,6 +1,7 @@
 
-import model.stock as stock
-import plot.stock as plot
+import utils.plot.axe as axe
+import utils.plot.figure as figure
+import utils.plot.plot as plot
 import db
 
 
@@ -10,11 +11,20 @@ import db
 def main():
 	print("Plot ...")
 
-	stc = stock.load("data/a.us.txt")
+	f = figure.create("Stock")
 
-	plt = plot.Plot(stc)
-	
-	plt.draw()
+	sp = f.subplot(1, 1, 1)
+	sp.set_x_y([0,  3], [0, 3])
+	sp.set_x_label('x')
+	sp.set_y_label('Y')
+
+	x_axe = axe.create([1, 2], ["September", "November"])
+	y_axe = axe.create([1, 2], ["10$", "1000$", "10000$"])
+
+	f.set_x_axe(x_axe)
+	f.set_y_axe(y_axe)
+
+	f.show()
 
 
 
