@@ -7,4 +7,4 @@ notifications:
     on_failure: never
 
 script:
-- travis_retry ./run_unit_tests.sh
+- travis_retry ./run.sh
