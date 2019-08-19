@@ -1,10 +1,16 @@
 
+import market
+import candles
+
 
 
 ## Main
 
 def main():
-	pass
+	ohlc = candles.load('https://pythonprogramming.net/yahoo_finance_replacement')
+	m = market.create("EBAY", ohlc)
+	m.show()
+
 
 
 
